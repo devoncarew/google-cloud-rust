@@ -64,7 +64,8 @@ type methodAnnotation struct {
 	QueryParams       []*api.Field
 	BodyAccessor      string
 	ServiceStructName string
-	OperationInfo     *operationInfo
+	RequestType       string
+	ResponseType      string
 }
 
 type pathInfoAnnotation struct {
@@ -75,11 +76,6 @@ type pathInfoAnnotation struct {
 	HasBody     bool
 }
 
-type operationInfo struct {
-	MetadataType string
-	ResponseType string
-}
-
 type oneOfAnnotation struct {
 	Name     string
 	DocLines []string
@@ -87,8 +83,8 @@ type oneOfAnnotation struct {
 
 type fieldAnnotation struct {
 	Name             string
+	Type             string
 	DocLines         []string
-	FieldType        string
 	AsQueryParameter string
 }
 
@@ -215,28 +211,26 @@ func annotateMethod(m *api.Method, s *api.Service, state *api.APIState) {
 		PathParams:        language.PathParams(m, state),
 		QueryParams:       language.QueryParams(m, state),
 		ServiceStructName: s.Name,
-	}
-	if m.OperationInfo != nil {
-		annotation.OperationInfo = &operationInfo{
-			MetadataType: methodInOutTypeName(m.OperationInfo.MetadataTypeID, state),
-			ResponseType: methodInOutTypeName(m.OperationInfo.ResponseTypeID, state),
-		}
+		// todo: just use the m.InputTye?
+		RequestType:  methodInOutTypeName(m.InputTypeID, state),
+		ResponseType: methodInOutTypeName(m.OutputTypeID, state),
 	}
 	m.Codec = annotation
 }
 
 func annotateOneOf(field *api.OneOf, state *api.APIState) {
 	field.Codec = &oneOfAnnotation{
-		Name:     toPascal(field.Name),
+		Name:     strcase.ToLowerCamel(field.Name),
 		DocLines: formatDocComments(field.Documentation, state),
 	}
 }
 
 func annotateField(field *api.Field, state *api.APIState) {
 	field.Codec = &fieldAnnotation{
-		Name:      toPascal(field.Name),
-		DocLines:  formatDocComments(field.Documentation, state),
-		FieldType: fieldType(field, state),
+		// todo: use json name?
+		Name:     strcase.ToLowerCamel(field.Name),
+		Type:     fieldType(field, state),
+		DocLines: formatDocComments(field.Documentation, state),
 	}
 }
 

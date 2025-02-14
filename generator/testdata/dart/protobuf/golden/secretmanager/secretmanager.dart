@@ -20,6 +20,10 @@
 /// Provides convenience while improving security.
 library;
 
+import 'dart:typed_data';
+
+import 'package:http/http.dart' as http;
+
 /// Secret Manager Service
 /// 
 /// Manages secrets and operations using those secrets. Implements a REST
@@ -28,45 +32,46 @@ library;
 /// * [Secret][google.cloud.secretmanager.v1.Secret]
 /// * [SecretVersion][google.cloud.secretmanager.v1.SecretVersion]
 class SecretManagerService {
+  static const String defaultHost = 'https://secretmanager.googleapis.com';
 
   /// Lists [Secrets][google.cloud.secretmanager.v1.Secret].
-  void listSecrets() {
-    // TODO:
+  Future<ListSecretsResponse> listSecrets(ListSecretsRequest request) {
+    throw UnimplementedError('listSecrets');
   }
 
   /// Creates a new [Secret][google.cloud.secretmanager.v1.Secret] containing no
   /// [SecretVersions][google.cloud.secretmanager.v1.SecretVersion].
-  void createSecret() {
-    // TODO:
+  Future<Secret> createSecret(CreateSecretRequest request) {
+    throw UnimplementedError('createSecret');
   }
 
   /// Creates a new [SecretVersion][google.cloud.secretmanager.v1.SecretVersion]
   /// containing secret data and attaches it to an existing
   /// [Secret][google.cloud.secretmanager.v1.Secret].
-  void addSecretVersion() {
-    // TODO:
+  Future<SecretVersion> addSecretVersion(AddSecretVersionRequest request) {
+    throw UnimplementedError('addSecretVersion');
   }
 
   /// Gets metadata for a given [Secret][google.cloud.secretmanager.v1.Secret].
-  void getSecret() {
-    // TODO:
+  Future<Secret> getSecret(GetSecretRequest request) {
+    throw UnimplementedError('getSecret');
   }
 
   /// Updates metadata of an existing
   /// [Secret][google.cloud.secretmanager.v1.Secret].
-  void updateSecret() {
-    // TODO:
+  Future<Secret> updateSecret(UpdateSecretRequest request) {
+    throw UnimplementedError('updateSecret');
   }
 
   /// Deletes a [Secret][google.cloud.secretmanager.v1.Secret].
-  void deleteSecret() {
-    // TODO:
+  Future<void> deleteSecret(DeleteSecretRequest request) {
+    throw UnimplementedError('deleteSecret');
   }
 
   /// Lists [SecretVersions][google.cloud.secretmanager.v1.SecretVersion]. This
   /// call does not return secret data.
-  void listSecretVersions() {
-    // TODO:
+  Future<ListSecretVersionsResponse> listSecretVersions(ListSecretVersionsRequest request) {
+    throw UnimplementedError('listSecretVersions');
   }
 
   /// Gets metadata for a
@@ -74,8 +79,8 @@ class SecretManagerService {
   /// 
   /// `projects/*/secrets/*/versions/latest` is an alias to the most recently
   /// created [SecretVersion][google.cloud.secretmanager.v1.SecretVersion].
-  void getSecretVersion() {
-    // TODO:
+  Future<SecretVersion> getSecretVersion(GetSecretVersionRequest request) {
+    throw UnimplementedError('getSecretVersion');
   }
 
   /// Accesses a [SecretVersion][google.cloud.secretmanager.v1.SecretVersion].
@@ -83,8 +88,8 @@ class SecretManagerService {
   /// 
   /// `projects/*/secrets/*/versions/latest` is an alias to the most recently
   /// created [SecretVersion][google.cloud.secretmanager.v1.SecretVersion].
-  void accessSecretVersion() {
-    // TODO:
+  Future<AccessSecretVersionResponse> accessSecretVersion(AccessSecretVersionRequest request) {
+    throw UnimplementedError('accessSecretVersion');
   }
 
   /// Disables a [SecretVersion][google.cloud.secretmanager.v1.SecretVersion].
@@ -92,8 +97,8 @@ class SecretManagerService {
   /// Sets the [state][google.cloud.secretmanager.v1.SecretVersion.state] of the
   /// [SecretVersion][google.cloud.secretmanager.v1.SecretVersion] to
   /// [DISABLED][google.cloud.secretmanager.v1.SecretVersion.State.DISABLED].
-  void disableSecretVersion() {
-    // TODO:
+  Future<SecretVersion> disableSecretVersion(DisableSecretVersionRequest request) {
+    throw UnimplementedError('disableSecretVersion');
   }
 
   /// Enables a [SecretVersion][google.cloud.secretmanager.v1.SecretVersion].
@@ -101,8 +106,8 @@ class SecretManagerService {
   /// Sets the [state][google.cloud.secretmanager.v1.SecretVersion.state] of the
   /// [SecretVersion][google.cloud.secretmanager.v1.SecretVersion] to
   /// [ENABLED][google.cloud.secretmanager.v1.SecretVersion.State.ENABLED].
-  void enableSecretVersion() {
-    // TODO:
+  Future<SecretVersion> enableSecretVersion(EnableSecretVersionRequest request) {
+    throw UnimplementedError('enableSecretVersion');
   }
 
   /// Destroys a [SecretVersion][google.cloud.secretmanager.v1.SecretVersion].
@@ -111,8 +116,8 @@ class SecretManagerService {
   /// [SecretVersion][google.cloud.secretmanager.v1.SecretVersion] to
   /// [DESTROYED][google.cloud.secretmanager.v1.SecretVersion.State.DESTROYED]
   /// and irrevocably destroys the secret data.
-  void destroySecretVersion() {
-    // TODO:
+  Future<SecretVersion> destroySecretVersion(DestroySecretVersionRequest request) {
+    throw UnimplementedError('destroySecretVersion');
   }
 
   /// Sets the access control policy on the specified secret. Replaces any
@@ -122,14 +127,14 @@ class SecretManagerService {
   /// [SecretVersions][google.cloud.secretmanager.v1.SecretVersion] are enforced
   /// according to the policy set on the associated
   /// [Secret][google.cloud.secretmanager.v1.Secret].
-  void setIamPolicy() {
-    // TODO:
+  Future<Policy> setIamPolicy(SetIamPolicyRequest request) {
+    throw UnimplementedError('setIamPolicy');
   }
 
   /// Gets the access control policy for a secret.
   /// Returns empty policy if the secret exists and does not have a policy set.
-  void getIamPolicy() {
-    // TODO:
+  Future<Policy> getIamPolicy(GetIamPolicyRequest request) {
+    throw UnimplementedError('getIamPolicy');
   }
 
   /// Returns permissions that a caller has for the specified secret.
@@ -139,18 +144,18 @@ class SecretManagerService {
   /// Note: This operation is designed to be used for building permission-aware
   /// UIs and command-line tools, not for authorization checking. This operation
   /// may "fail open" without warning.
-  void testIamPermissions() {
-    // TODO:
+  Future<TestIamPermissionsResponse> testIamPermissions(TestIamPermissionsRequest request) {
+    throw UnimplementedError('testIamPermissions');
   }
 
   /// Lists information about the supported locations for this service.
-  void listLocations() {
-    // TODO:
+  Future<ListLocationsResponse> listLocations(ListLocationsRequest request) {
+    throw UnimplementedError('listLocations');
   }
 
   /// Gets information about a location.
-  void getLocation() {
-    // TODO:
+  Future<Location> getLocation(GetLocationRequest request) {
+    throw UnimplementedError('getLocation');
   }
 }
 
@@ -161,12 +166,248 @@ class SecretManagerService {
 /// [SecretVersions][google.cloud.secretmanager.v1.SecretVersion] that represent
 /// the secret data.
 class Secret {
-  // TODO:
+
+  /// Output only. The resource name of the
+  /// [Secret][google.cloud.secretmanager.v1.Secret] in the format
+  /// `projects/*/secrets/*`.
+  final String? name;
+
+  /// Optional. Immutable. The replication policy of the secret data attached to
+  /// the [Secret][google.cloud.secretmanager.v1.Secret].
+  /// 
+  /// The replication policy cannot be changed after the Secret has been created.
+  final Replication? replication;
+
+  /// Output only. The time at which the
+  /// [Secret][google.cloud.secretmanager.v1.Secret] was created.
+  final DateTime? createTime;
+
+  /// The labels assigned to this Secret.
+  /// 
+  /// Label keys must be between 1 and 63 characters long, have a UTF-8 encoding
+  /// of maximum 128 bytes, and must conform to the following PCRE regular
+  /// expression: `[\p{Ll}\p{Lo}][\p{Ll}\p{Lo}\p{N}_-]{0,62}`
+  /// 
+  /// Label values must be between 0 and 63 characters long, have a UTF-8
+  /// encoding of maximum 128 bytes, and must conform to the following PCRE
+  /// regular expression: `[\p{Ll}\p{Lo}\p{N}_-]{0,63}`
+  /// 
+  /// No more than 64 labels can be assigned to a given resource.
+  final Map? labels;
+
+  /// Optional. A list of up to 10 Pub/Sub topics to which messages are published
+  /// when control plane operations are called on the secret or its versions.
+  final List<Topic>? topics;
+
+  /// Optional. Timestamp in UTC when the
+  /// [Secret][google.cloud.secretmanager.v1.Secret] is scheduled to expire.
+  /// This is always provided on output, regardless of what was sent on input.
+  final DateTime? expireTime;
+
+  /// Input only. The TTL for the
+  /// [Secret][google.cloud.secretmanager.v1.Secret].
+  final Duration? ttl;
+
+  /// Optional. Etag of the currently stored
+  /// [Secret][google.cloud.secretmanager.v1.Secret].
+  final String? etag;
+
+  /// Optional. Rotation policy attached to the
+  /// [Secret][google.cloud.secretmanager.v1.Secret]. May be excluded if there is
+  /// no rotation policy.
+  final Rotation? rotation;
+
+  /// Optional. Mapping from version alias to version name.
+  /// 
+  /// A version alias is a string with a maximum length of 63 characters and can
+  /// contain uppercase and lowercase letters, numerals, and the hyphen (`-`)
+  /// and underscore ('_') characters. An alias string must start with a
+  /// letter and cannot be the string 'latest' or 'NEW'.
+  /// No more than 50 aliases can be assigned to a given secret.
+  /// 
+  /// Version-Alias pairs will be viewable via GetSecret and modifiable via
+  /// UpdateSecret. Access by alias is only be supported on
+  /// GetSecretVersion and AccessSecretVersion.
+  final Map? versionAliases;
+
+  /// Optional. Custom metadata about the secret.
+  /// 
+  /// Annotations are distinct from various forms of labels.
+  /// Annotations exist to allow client tools to store their own state
+  /// information without requiring a database.
+  /// 
+  /// Annotation keys must be between 1 and 63 characters long, have a UTF-8
+  /// encoding of maximum 128 bytes, begin and end with an alphanumeric character
+  /// ([a-z0-9A-Z]), and may have dashes (-), underscores (_), dots (.), and
+  /// alphanumerics in between these symbols.
+  /// 
+  /// The total size of annotation keys and values must be less than 16KiB.
+  final Map? annotations;
+
+  /// Optional. Secret Version TTL after destruction request
+  /// 
+  /// This is a part of the Delayed secret version destroy feature.
+  /// For secret with TTL>0, version destruction doesn't happen immediately
+  /// on calling destroy instead the version goes to a disabled state and
+  /// destruction happens after the TTL expires.
+  final Duration? versionDestroyTtl;
+
+  /// Optional. The customer-managed encryption configuration of the Regionalised
+  /// Secrets. If no configuration is provided, Google-managed default encryption
+  /// is used.
+  /// 
+  /// Updates to the [Secret][google.cloud.secretmanager.v1.Secret] encryption
+  /// configuration only apply to
+  /// [SecretVersions][google.cloud.secretmanager.v1.SecretVersion] added
+  /// afterwards. They do not apply retroactively to existing
+  /// [SecretVersions][google.cloud.secretmanager.v1.SecretVersion].
+  final CustomerManagedEncryption? customerManagedEncryption;
+
+  Secret({
+    this.name,
+    this.replication,
+    this.createTime,
+    this.labels,
+    this.topics,
+    this.expireTime,
+    this.ttl,
+    this.etag,
+    this.rotation,
+    this.versionAliases,
+    this.annotations,
+    this.versionDestroyTtl,
+    this.customerManagedEncryption,
+  });
+
+  factory Secret.fromJson(Map<String, Object?> json) {
+    return Secret(
+      name: json['name'],
+      replication: json['replication'],
+      createTime: json['createTime'],
+      labels: json['labels'],
+      topics: json['topics'],
+      expireTime: json['expireTime'],
+      ttl: json['ttl'],
+      etag: json['etag'],
+      rotation: json['rotation'],
+      versionAliases: json['versionAliases'],
+      annotations: json['annotations'],
+      versionDestroyTtl: json['versionDestroyTtl'],
+      customerManagedEncryption: json['customerManagedEncryption'],
+    );
+  }
+
+  Map<String, Object?> toJson() => {
+    if (name != null) 'name': name,
+    if (replication != null) 'replication': replication,
+    if (createTime != null) 'createTime': createTime,
+    if (labels != null) 'labels': labels,
+    if (topics != null) 'topics': topics,
+    if (expireTime != null) 'expireTime': expireTime,
+    if (ttl != null) 'ttl': ttl,
+    if (etag != null) 'etag': etag,
+    if (rotation != null) 'rotation': rotation,
+    if (versionAliases != null) 'versionAliases': versionAliases,
+    if (annotations != null) 'annotations': annotations,
+    if (versionDestroyTtl != null) 'versionDestroyTtl': versionDestroyTtl,
+    if (customerManagedEncryption != null) 'customerManagedEncryption': customerManagedEncryption,
+  };
 }
 
 /// A secret version resource in the Secret Manager API.
 class SecretVersion {
-  // TODO:
+
+  /// Output only. The resource name of the
+  /// [SecretVersion][google.cloud.secretmanager.v1.SecretVersion] in the format
+  /// `projects/*/secrets/*/versions/*`.
+  /// 
+  /// [SecretVersion][google.cloud.secretmanager.v1.SecretVersion] IDs in a
+  /// [Secret][google.cloud.secretmanager.v1.Secret] start at 1 and are
+  /// incremented for each subsequent version of the secret.
+  final String? name;
+
+  /// Output only. The time at which the
+  /// [SecretVersion][google.cloud.secretmanager.v1.SecretVersion] was created.
+  final DateTime? createTime;
+
+  /// Output only. The time this
+  /// [SecretVersion][google.cloud.secretmanager.v1.SecretVersion] was destroyed.
+  /// Only present if [state][google.cloud.secretmanager.v1.SecretVersion.state]
+  /// is
+  /// [DESTROYED][google.cloud.secretmanager.v1.SecretVersion.State.DESTROYED].
+  final DateTime? destroyTime;
+
+  /// Output only. The current state of the
+  /// [SecretVersion][google.cloud.secretmanager.v1.SecretVersion].
+  final SecretVersion$State? state;
+
+  /// The replication status of the
+  /// [SecretVersion][google.cloud.secretmanager.v1.SecretVersion].
+  final ReplicationStatus? replicationStatus;
+
+  /// Output only. Etag of the currently stored
+  /// [SecretVersion][google.cloud.secretmanager.v1.SecretVersion].
+  final String? etag;
+
+  /// Output only. True if payload checksum specified in
+  /// [SecretPayload][google.cloud.secretmanager.v1.SecretPayload] object has
+  /// been received by
+  /// [SecretManagerService][google.cloud.secretmanager.v1.SecretManagerService]
+  /// on
+  /// [SecretManagerService.AddSecretVersion][google.cloud.secretmanager.v1.SecretManagerService.AddSecretVersion].
+  final bool? clientSpecifiedPayloadChecksum;
+
+  /// Optional. Output only. Scheduled destroy time for secret version.
+  /// This is a part of the Delayed secret version destroy feature. For a
+  /// Secret with a valid version destroy TTL, when a secert version is
+  /// destroyed, the version is moved to disabled state and it is scheduled for
+  /// destruction. The version is destroyed only after the
+  /// `scheduled_destroy_time`.
+  final DateTime? scheduledDestroyTime;
+
+  /// Output only. The customer-managed encryption status of the
+  /// [SecretVersion][google.cloud.secretmanager.v1.SecretVersion]. Only
+  /// populated if customer-managed encryption is used and
+  /// [Secret][google.cloud.secretmanager.v1.Secret] is a Regionalised Secret.
+  final CustomerManagedEncryptionStatus? customerManagedEncryption;
+
+  SecretVersion({
+    this.name,
+    this.createTime,
+    this.destroyTime,
+    this.state,
+    this.replicationStatus,
+    this.etag,
+    this.clientSpecifiedPayloadChecksum,
+    this.scheduledDestroyTime,
+    this.customerManagedEncryption,
+  });
+
+  factory SecretVersion.fromJson(Map<String, Object?> json) {
+    return SecretVersion(
+      name: json['name'],
+      createTime: json['createTime'],
+      destroyTime: json['destroyTime'],
+      state: json['state'],
+      replicationStatus: json['replicationStatus'],
+      etag: json['etag'],
+      clientSpecifiedPayloadChecksum: json['clientSpecifiedPayloadChecksum'],
+      scheduledDestroyTime: json['scheduledDestroyTime'],
+      customerManagedEncryption: json['customerManagedEncryption'],
+    );
+  }
+
+  Map<String, Object?> toJson() => {
+    if (name != null) 'name': name,
+    if (createTime != null) 'createTime': createTime,
+    if (destroyTime != null) 'destroyTime': destroyTime,
+    if (state != null) 'state': state,
+    if (replicationStatus != null) 'replicationStatus': replicationStatus,
+    if (etag != null) 'etag': etag,
+    if (clientSpecifiedPayloadChecksum != null) 'clientSpecifiedPayloadChecksum': clientSpecifiedPayloadChecksum,
+    if (scheduledDestroyTime != null) 'scheduledDestroyTime': scheduledDestroyTime,
+    if (customerManagedEncryption != null) 'customerManagedEncryption': customerManagedEncryption,
+  };
 }
 
 /// The state of a
@@ -199,39 +440,199 @@ class SecretVersion$State {
 
 /// A policy that defines the replication and encryption configuration of data.
 class Replication {
-  // TODO:
+
+  /// The [Secret][google.cloud.secretmanager.v1.Secret] will automatically be
+  /// replicated without any restrictions.
+  final Replication$Automatic? automatic;
+
+  /// The [Secret][google.cloud.secretmanager.v1.Secret] will only be
+  /// replicated into the locations specified.
+  final Replication$UserManaged? userManaged;
+
+  Replication({
+    this.automatic,
+    this.userManaged,
+  });
+
+  factory Replication.fromJson(Map<String, Object?> json) {
+    return Replication(
+      automatic: json['automatic'],
+      userManaged: json['userManaged'],
+    );
+  }
+
+  Map<String, Object?> toJson() => {
+    if (automatic != null) 'automatic': automatic,
+    if (userManaged != null) 'userManaged': userManaged,
+  };
 }
 
 /// A replication policy that replicates the
 /// [Secret][google.cloud.secretmanager.v1.Secret] payload without any
 /// restrictions.
 class Replication$Automatic {
-  // TODO:
+
+  /// Optional. The customer-managed encryption configuration of the
+  /// [Secret][google.cloud.secretmanager.v1.Secret]. If no configuration is
+  /// provided, Google-managed default encryption is used.
+  /// 
+  /// Updates to the [Secret][google.cloud.secretmanager.v1.Secret] encryption
+  /// configuration only apply to
+  /// [SecretVersions][google.cloud.secretmanager.v1.SecretVersion] added
+  /// afterwards. They do not apply retroactively to existing
+  /// [SecretVersions][google.cloud.secretmanager.v1.SecretVersion].
+  final CustomerManagedEncryption? customerManagedEncryption;
+
+  Replication$Automatic({
+    this.customerManagedEncryption,
+  });
+
+  factory Replication$Automatic.fromJson(Map<String, Object?> json) {
+    return Replication$Automatic(
+      customerManagedEncryption: json['customerManagedEncryption'],
+    );
+  }
+
+  Map<String, Object?> toJson() => {
+    if (customerManagedEncryption != null) 'customerManagedEncryption': customerManagedEncryption,
+  };
 }
 
 /// A replication policy that replicates the
 /// [Secret][google.cloud.secretmanager.v1.Secret] payload into the locations
 /// specified in [Secret.replication.user_managed.replicas][]
 class Replication$UserManaged {
-  // TODO:
+
+  /// Required. The list of Replicas for this
+  /// [Secret][google.cloud.secretmanager.v1.Secret].
+  /// 
+  /// Cannot be empty.
+  final List<Replication$UserManaged$Replica>? replicas;
+
+  Replication$UserManaged({
+    this.replicas,
+  });
+
+  factory Replication$UserManaged.fromJson(Map<String, Object?> json) {
+    return Replication$UserManaged(
+      replicas: json['replicas'],
+    );
+  }
+
+  Map<String, Object?> toJson() => {
+    if (replicas != null) 'replicas': replicas,
+  };
 }
 
 /// Represents a Replica for this
 /// [Secret][google.cloud.secretmanager.v1.Secret].
 class Replication$UserManaged$Replica {
-  // TODO:
+
+  /// The canonical IDs of the location to replicate data.
+  /// For example: `"us-east1"`.
+  final String? location;
+
+  /// Optional. The customer-managed encryption configuration of the
+  /// [User-Managed Replica][Replication.UserManaged.Replica]. If no
+  /// configuration is provided, Google-managed default encryption is used.
+  /// 
+  /// Updates to the [Secret][google.cloud.secretmanager.v1.Secret]
+  /// encryption configuration only apply to
+  /// [SecretVersions][google.cloud.secretmanager.v1.SecretVersion] added
+  /// afterwards. They do not apply retroactively to existing
+  /// [SecretVersions][google.cloud.secretmanager.v1.SecretVersion].
+  final CustomerManagedEncryption? customerManagedEncryption;
+
+  Replication$UserManaged$Replica({
+    this.location,
+    this.customerManagedEncryption,
+  });
+
+  factory Replication$UserManaged$Replica.fromJson(Map<String, Object?> json) {
+    return Replication$UserManaged$Replica(
+      location: json['location'],
+      customerManagedEncryption: json['customerManagedEncryption'],
+    );
+  }
+
+  Map<String, Object?> toJson() => {
+    if (location != null) 'location': location,
+    if (customerManagedEncryption != null) 'customerManagedEncryption': customerManagedEncryption,
+  };
 }
 
 /// Configuration for encrypting secret payloads using customer-managed
 /// encryption keys (CMEK).
 class CustomerManagedEncryption {
-  // TODO:
+
+  /// Required. The resource name of the Cloud KMS CryptoKey used to encrypt
+  /// secret payloads.
+  /// 
+  /// For secrets using the
+  /// [UserManaged][google.cloud.secretmanager.v1.Replication.UserManaged]
+  /// replication policy type, Cloud KMS CryptoKeys must reside in the same
+  /// location as the [replica location][Secret.UserManaged.Replica.location].
+  /// 
+  /// For secrets using the
+  /// [Automatic][google.cloud.secretmanager.v1.Replication.Automatic]
+  /// replication policy type, Cloud KMS CryptoKeys must reside in `global`.
+  /// 
+  /// The expected format is `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+  final String? kmsKeyName;
+
+  CustomerManagedEncryption({
+    this.kmsKeyName,
+  });
+
+  factory CustomerManagedEncryption.fromJson(Map<String, Object?> json) {
+    return CustomerManagedEncryption(
+      kmsKeyName: json['kmsKeyName'],
+    );
+  }
+
+  Map<String, Object?> toJson() => {
+    if (kmsKeyName != null) 'kmsKeyName': kmsKeyName,
+  };
 }
 
 /// The replication status of a
 /// [SecretVersion][google.cloud.secretmanager.v1.SecretVersion].
 class ReplicationStatus {
-  // TODO:
+
+  /// Describes the replication status of a
+  /// [SecretVersion][google.cloud.secretmanager.v1.SecretVersion] with
+  /// automatic replication.
+  /// 
+  /// Only populated if the parent
+  /// [Secret][google.cloud.secretmanager.v1.Secret] has an automatic
+  /// replication policy.
+  final ReplicationStatus$AutomaticStatus? automatic;
+
+  /// Describes the replication status of a
+  /// [SecretVersion][google.cloud.secretmanager.v1.SecretVersion] with
+  /// user-managed replication.
+  /// 
+  /// Only populated if the parent
+  /// [Secret][google.cloud.secretmanager.v1.Secret] has a user-managed
+  /// replication policy.
+  final ReplicationStatus$UserManagedStatus? userManaged;
+
+  ReplicationStatus({
+    this.automatic,
+    this.userManaged,
+  });
+
+  factory ReplicationStatus.fromJson(Map<String, Object?> json) {
+    return ReplicationStatus(
+      automatic: json['automatic'],
+      userManaged: json['userManaged'],
+    );
+  }
+
+  Map<String, Object?> toJson() => {
+    if (automatic != null) 'automatic': automatic,
+    if (userManaged != null) 'userManaged': userManaged,
+  };
 }
 
 /// The replication status of a
@@ -241,7 +642,25 @@ class ReplicationStatus {
 /// Only populated if the parent [Secret][google.cloud.secretmanager.v1.Secret]
 /// has an automatic replication policy.
 class ReplicationStatus$AutomaticStatus {
-  // TODO:
+
+  /// Output only. The customer-managed encryption status of the
+  /// [SecretVersion][google.cloud.secretmanager.v1.SecretVersion]. Only
+  /// populated if customer-managed encryption is used.
+  final CustomerManagedEncryptionStatus? customerManagedEncryption;
+
+  ReplicationStatus$AutomaticStatus({
+    this.customerManagedEncryption,
+  });
+
+  factory ReplicationStatus$AutomaticStatus.fromJson(Map<String, Object?> json) {
+    return ReplicationStatus$AutomaticStatus(
+      customerManagedEncryption: json['customerManagedEncryption'],
+    );
+  }
+
+  Map<String, Object?> toJson() => {
+    if (customerManagedEncryption != null) 'customerManagedEncryption': customerManagedEncryption,
+  };
 }
 
 /// The replication status of a
@@ -251,24 +670,104 @@ class ReplicationStatus$AutomaticStatus {
 /// Only populated if the parent [Secret][google.cloud.secretmanager.v1.Secret]
 /// has a user-managed replication policy.
 class ReplicationStatus$UserManagedStatus {
-  // TODO:
+
+  /// Output only. The list of replica statuses for the
+  /// [SecretVersion][google.cloud.secretmanager.v1.SecretVersion].
+  final List<ReplicationStatus$UserManagedStatus$ReplicaStatus>? replicas;
+
+  ReplicationStatus$UserManagedStatus({
+    this.replicas,
+  });
+
+  factory ReplicationStatus$UserManagedStatus.fromJson(Map<String, Object?> json) {
+    return ReplicationStatus$UserManagedStatus(
+      replicas: json['replicas'],
+    );
+  }
+
+  Map<String, Object?> toJson() => {
+    if (replicas != null) 'replicas': replicas,
+  };
 }
 
 /// Describes the status of a user-managed replica for the
 /// [SecretVersion][google.cloud.secretmanager.v1.SecretVersion].
 class ReplicationStatus$UserManagedStatus$ReplicaStatus {
-  // TODO:
+
+  /// Output only. The canonical ID of the replica location.
+  /// For example: `"us-east1"`.
+  final String? location;
+
+  /// Output only. The customer-managed encryption status of the
+  /// [SecretVersion][google.cloud.secretmanager.v1.SecretVersion]. Only
+  /// populated if customer-managed encryption is used.
+  final CustomerManagedEncryptionStatus? customerManagedEncryption;
+
+  ReplicationStatus$UserManagedStatus$ReplicaStatus({
+    this.location,
+    this.customerManagedEncryption,
+  });
+
+  factory ReplicationStatus$UserManagedStatus$ReplicaStatus.fromJson(Map<String, Object?> json) {
+    return ReplicationStatus$UserManagedStatus$ReplicaStatus(
+      location: json['location'],
+      customerManagedEncryption: json['customerManagedEncryption'],
+    );
+  }
+
+  Map<String, Object?> toJson() => {
+    if (location != null) 'location': location,
+    if (customerManagedEncryption != null) 'customerManagedEncryption': customerManagedEncryption,
+  };
 }
 
 /// Describes the status of customer-managed encryption.
 class CustomerManagedEncryptionStatus {
-  // TODO:
+
+  /// Required. The resource name of the Cloud KMS CryptoKeyVersion used to
+  /// encrypt the secret payload, in the following format:
+  /// `projects/*/locations/*/keyRings/*/cryptoKeys/*/versions/*`.
+  final String? kmsKeyVersionName;
+
+  CustomerManagedEncryptionStatus({
+    this.kmsKeyVersionName,
+  });
+
+  factory CustomerManagedEncryptionStatus.fromJson(Map<String, Object?> json) {
+    return CustomerManagedEncryptionStatus(
+      kmsKeyVersionName: json['kmsKeyVersionName'],
+    );
+  }
+
+  Map<String, Object?> toJson() => {
+    if (kmsKeyVersionName != null) 'kmsKeyVersionName': kmsKeyVersionName,
+  };
 }
 
 /// A Pub/Sub topic which Secret Manager will publish to when control plane
 /// events occur on this secret.
 class Topic {
-  // TODO:
+
+  /// Required. The resource name of the Pub/Sub topic that will be published to,
+  /// in the following format: `projects/*/topics/*`. For publication to succeed,
+  /// the Secret Manager service agent must have the `pubsub.topic.publish`
+  /// permission on the topic. The Pub/Sub Publisher role
+  /// (`roles/pubsub.publisher`) includes this permission.
+  final String? name;
+
+  Topic({
+    this.name,
+  });
+
+  factory Topic.fromJson(Map<String, Object?> json) {
+    return Topic(
+      name: json['name'],
+    );
+  }
+
+  Map<String, Object?> toJson() => {
+    if (name != null) 'name': name,
+  };
 }
 
 /// The rotation time and period for a
@@ -277,102 +776,620 @@ class Topic {
 /// Secret. [Secret.topics][google.cloud.secretmanager.v1.Secret.topics] must be
 /// set to configure rotation.
 class Rotation {
-  // TODO:
+
+  /// Optional. Timestamp in UTC at which the
+  /// [Secret][google.cloud.secretmanager.v1.Secret] is scheduled to rotate.
+  /// Cannot be set to less than 300s (5 min) in the future and at most
+  /// 3153600000s (100 years).
+  /// 
+  /// [next_rotation_time][google.cloud.secretmanager.v1.Rotation.next_rotation_time]
+  /// MUST  be set if
+  /// [rotation_period][google.cloud.secretmanager.v1.Rotation.rotation_period]
+  /// is set.
+  final DateTime? nextRotationTime;
+
+  /// Input only. The Duration between rotation notifications. Must be in seconds
+  /// and at least 3600s (1h) and at most 3153600000s (100 years).
+  /// 
+  /// If
+  /// [rotation_period][google.cloud.secretmanager.v1.Rotation.rotation_period]
+  /// is set,
+  /// [next_rotation_time][google.cloud.secretmanager.v1.Rotation.next_rotation_time]
+  /// must be set.
+  /// [next_rotation_time][google.cloud.secretmanager.v1.Rotation.next_rotation_time]
+  /// will be advanced by this period when the service automatically sends
+  /// rotation notifications.
+  final Duration? rotationPeriod;
+
+  Rotation({
+    this.nextRotationTime,
+    this.rotationPeriod,
+  });
+
+  factory Rotation.fromJson(Map<String, Object?> json) {
+    return Rotation(
+      nextRotationTime: json['nextRotationTime'],
+      rotationPeriod: json['rotationPeriod'],
+    );
+  }
+
+  Map<String, Object?> toJson() => {
+    if (nextRotationTime != null) 'nextRotationTime': nextRotationTime,
+    if (rotationPeriod != null) 'rotationPeriod': rotationPeriod,
+  };
 }
 
 /// A secret payload resource in the Secret Manager API. This contains the
 /// sensitive secret payload that is associated with a
 /// [SecretVersion][google.cloud.secretmanager.v1.SecretVersion].
 class SecretPayload {
-  // TODO:
+
+  /// The secret data. Must be no larger than 64KiB.
+  final Uint8List? data;
+
+  /// Optional. If specified,
+  /// [SecretManagerService][google.cloud.secretmanager.v1.SecretManagerService]
+  /// will verify the integrity of the received
+  /// [data][google.cloud.secretmanager.v1.SecretPayload.data] on
+  /// [SecretManagerService.AddSecretVersion][google.cloud.secretmanager.v1.SecretManagerService.AddSecretVersion]
+  /// calls using the crc32c checksum and store it to include in future
+  /// [SecretManagerService.AccessSecretVersion][google.cloud.secretmanager.v1.SecretManagerService.AccessSecretVersion]
+  /// responses. If a checksum is not provided in the
+  /// [SecretManagerService.AddSecretVersion][google.cloud.secretmanager.v1.SecretManagerService.AddSecretVersion]
+  /// request, the
+  /// [SecretManagerService][google.cloud.secretmanager.v1.SecretManagerService]
+  /// will generate and store one for you.
+  /// 
+  /// The CRC32C value is encoded as a Int64 for compatibility, and can be
+  /// safely downconverted to uint32 in languages that support this type.
+  /// https://cloud.google.com/apis/design/design_patterns#integer_types
+  final int? dataCrc32C;
+
+  SecretPayload({
+    this.data,
+    this.dataCrc32C,
+  });
+
+  factory SecretPayload.fromJson(Map<String, Object?> json) {
+    return SecretPayload(
+      data: json['data'],
+      dataCrc32C: json['dataCrc32C'],
+    );
+  }
+
+  Map<String, Object?> toJson() => {
+    if (data != null) 'data': data,
+    if (dataCrc32C != null) 'dataCrc32C': dataCrc32C,
+  };
 }
 
 /// Request message for
 /// [SecretManagerService.ListSecrets][google.cloud.secretmanager.v1.SecretManagerService.ListSecrets].
 class ListSecretsRequest {
-  // TODO:
+
+  /// Required. The resource name of the project associated with the
+  /// [Secrets][google.cloud.secretmanager.v1.Secret], in the format `projects/*`
+  /// or `projects/*/locations/*`
+  final String? parent;
+
+  /// Optional. The maximum number of results to be returned in a single page. If
+  /// set to 0, the server decides the number of results to return. If the
+  /// number is greater than 25000, it is capped at 25000.
+  final int? pageSize;
+
+  /// Optional. Pagination token, returned earlier via
+  /// [ListSecretsResponse.next_page_token][google.cloud.secretmanager.v1.ListSecretsResponse.next_page_token].
+  final String? pageToken;
+
+  /// Optional. Filter string, adhering to the rules in
+  /// [List-operation
+  /// filtering](https://cloud.google.com/secret-manager/docs/filtering). List
+  /// only secrets matching the filter. If filter is empty, all secrets are
+  /// listed.
+  final String? filter;
+
+  ListSecretsRequest({
+    this.parent,
+    this.pageSize,
+    this.pageToken,
+    this.filter,
+  });
+
+  factory ListSecretsRequest.fromJson(Map<String, Object?> json) {
+    return ListSecretsRequest(
+      parent: json['parent'],
+      pageSize: json['pageSize'],
+      pageToken: json['pageToken'],
+      filter: json['filter'],
+    );
+  }
+
+  Map<String, Object?> toJson() => {
+    if (parent != null) 'parent': parent,
+    if (pageSize != null) 'pageSize': pageSize,
+    if (pageToken != null) 'pageToken': pageToken,
+    if (filter != null) 'filter': filter,
+  };
 }
 
 /// Response message for
 /// [SecretManagerService.ListSecrets][google.cloud.secretmanager.v1.SecretManagerService.ListSecrets].
 class ListSecretsResponse {
-  // TODO:
+
+  /// The list of [Secrets][google.cloud.secretmanager.v1.Secret] sorted in
+  /// reverse by create_time (newest first).
+  final List<Secret>? secrets;
+
+  /// A token to retrieve the next page of results. Pass this value in
+  /// [ListSecretsRequest.page_token][google.cloud.secretmanager.v1.ListSecretsRequest.page_token]
+  /// to retrieve the next page.
+  final String? nextPageToken;
+
+  /// The total number of [Secrets][google.cloud.secretmanager.v1.Secret] but 0
+  /// when the
+  /// [ListSecretsRequest.filter][google.cloud.secretmanager.v1.ListSecretsRequest.filter]
+  /// field is set.
+  final int? totalSize;
+
+  ListSecretsResponse({
+    this.secrets,
+    this.nextPageToken,
+    this.totalSize,
+  });
+
+  factory ListSecretsResponse.fromJson(Map<String, Object?> json) {
+    return ListSecretsResponse(
+      secrets: json['secrets'],
+      nextPageToken: json['nextPageToken'],
+      totalSize: json['totalSize'],
+    );
+  }
+
+  Map<String, Object?> toJson() => {
+    if (secrets != null) 'secrets': secrets,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken,
+    if (totalSize != null) 'totalSize': totalSize,
+  };
 }
 
 /// Request message for
 /// [SecretManagerService.CreateSecret][google.cloud.secretmanager.v1.SecretManagerService.CreateSecret].
 class CreateSecretRequest {
-  // TODO:
+
+  /// Required. The resource name of the project to associate with the
+  /// [Secret][google.cloud.secretmanager.v1.Secret], in the format `projects/*`
+  /// or `projects/*/locations/*`.
+  final String? parent;
+
+  /// Required. This must be unique within the project.
+  /// 
+  /// A secret ID is a string with a maximum length of 255 characters and can
+  /// contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and
+  /// underscore (`_`) characters.
+  final String? secretId;
+
+  /// Required. A [Secret][google.cloud.secretmanager.v1.Secret] with initial
+  /// field values.
+  final Secret? secret;
+
+  CreateSecretRequest({
+    this.parent,
+    this.secretId,
+    this.secret,
+  });
+
+  factory CreateSecretRequest.fromJson(Map<String, Object?> json) {
+    return CreateSecretRequest(
+      parent: json['parent'],
+      secretId: json['secretId'],
+      secret: json['secret'],
+    );
+  }
+
+  Map<String, Object?> toJson() => {
+    if (parent != null) 'parent': parent,
+    if (secretId != null) 'secretId': secretId,
+    if (secret != null) 'secret': secret,
+  };
 }
 
 /// Request message for
 /// [SecretManagerService.AddSecretVersion][google.cloud.secretmanager.v1.SecretManagerService.AddSecretVersion].
 class AddSecretVersionRequest {
-  // TODO:
+
+  /// Required. The resource name of the
+  /// [Secret][google.cloud.secretmanager.v1.Secret] to associate with the
+  /// [SecretVersion][google.cloud.secretmanager.v1.SecretVersion] in the format
+  /// `projects/*/secrets/*` or `projects/*/locations/*/secrets/*`.
+  final String? parent;
+
+  /// Required. The secret payload of the
+  /// [SecretVersion][google.cloud.secretmanager.v1.SecretVersion].
+  final SecretPayload? payload;
+
+  AddSecretVersionRequest({
+    this.parent,
+    this.payload,
+  });
+
+  factory AddSecretVersionRequest.fromJson(Map<String, Object?> json) {
+    return AddSecretVersionRequest(
+      parent: json['parent'],
+      payload: json['payload'],
+    );
+  }
+
+  Map<String, Object?> toJson() => {
+    if (parent != null) 'parent': parent,
+    if (payload != null) 'payload': payload,
+  };
 }
 
 /// Request message for
 /// [SecretManagerService.GetSecret][google.cloud.secretmanager.v1.SecretManagerService.GetSecret].
 class GetSecretRequest {
-  // TODO:
+
+  /// Required. The resource name of the
+  /// [Secret][google.cloud.secretmanager.v1.Secret], in the format
+  /// `projects/*/secrets/*` or `projects/*/locations/*/secrets/*`.
+  final String? name;
+
+  GetSecretRequest({
+    this.name,
+  });
+
+  factory GetSecretRequest.fromJson(Map<String, Object?> json) {
+    return GetSecretRequest(
+      name: json['name'],
+    );
+  }
+
+  Map<String, Object?> toJson() => {
+    if (name != null) 'name': name,
+  };
 }
 
 /// Request message for
 /// [SecretManagerService.ListSecretVersions][google.cloud.secretmanager.v1.SecretManagerService.ListSecretVersions].
 class ListSecretVersionsRequest {
-  // TODO:
+
+  /// Required. The resource name of the
+  /// [Secret][google.cloud.secretmanager.v1.Secret] associated with the
+  /// [SecretVersions][google.cloud.secretmanager.v1.SecretVersion] to list, in
+  /// the format `projects/*/secrets/*` or `projects/*/locations/*/secrets/*`.
+  final String? parent;
+
+  /// Optional. The maximum number of results to be returned in a single page. If
+  /// set to 0, the server decides the number of results to return. If the
+  /// number is greater than 25000, it is capped at 25000.
+  final int? pageSize;
+
+  /// Optional. Pagination token, returned earlier via
+  /// ListSecretVersionsResponse.next_page_token][].
+  final String? pageToken;
+
+  /// Optional. Filter string, adhering to the rules in
+  /// [List-operation
+  /// filtering](https://cloud.google.com/secret-manager/docs/filtering). List
+  /// only secret versions matching the filter. If filter is empty, all secret
+  /// versions are listed.
+  final String? filter;
+
+  ListSecretVersionsRequest({
+    this.parent,
+    this.pageSize,
+    this.pageToken,
+    this.filter,
+  });
+
+  factory ListSecretVersionsRequest.fromJson(Map<String, Object?> json) {
+    return ListSecretVersionsRequest(
+      parent: json['parent'],
+      pageSize: json['pageSize'],
+      pageToken: json['pageToken'],
+      filter: json['filter'],
+    );
+  }
+
+  Map<String, Object?> toJson() => {
+    if (parent != null) 'parent': parent,
+    if (pageSize != null) 'pageSize': pageSize,
+    if (pageToken != null) 'pageToken': pageToken,
+    if (filter != null) 'filter': filter,
+  };
 }
 
 /// Response message for
 /// [SecretManagerService.ListSecretVersions][google.cloud.secretmanager.v1.SecretManagerService.ListSecretVersions].
 class ListSecretVersionsResponse {
-  // TODO:
+
+  /// The list of [SecretVersions][google.cloud.secretmanager.v1.SecretVersion]
+  /// sorted in reverse by create_time (newest first).
+  final List<SecretVersion>? versions;
+
+  /// A token to retrieve the next page of results. Pass this value in
+  /// [ListSecretVersionsRequest.page_token][google.cloud.secretmanager.v1.ListSecretVersionsRequest.page_token]
+  /// to retrieve the next page.
+  final String? nextPageToken;
+
+  /// The total number of
+  /// [SecretVersions][google.cloud.secretmanager.v1.SecretVersion] but 0 when
+  /// the
+  /// [ListSecretsRequest.filter][google.cloud.secretmanager.v1.ListSecretsRequest.filter]
+  /// field is set.
+  final int? totalSize;
+
+  ListSecretVersionsResponse({
+    this.versions,
+    this.nextPageToken,
+    this.totalSize,
+  });
+
+  factory ListSecretVersionsResponse.fromJson(Map<String, Object?> json) {
+    return ListSecretVersionsResponse(
+      versions: json['versions'],
+      nextPageToken: json['nextPageToken'],
+      totalSize: json['totalSize'],
+    );
+  }
+
+  Map<String, Object?> toJson() => {
+    if (versions != null) 'versions': versions,
+    if (nextPageToken != null) 'nextPageToken': nextPageToken,
+    if (totalSize != null) 'totalSize': totalSize,
+  };
 }
 
 /// Request message for
 /// [SecretManagerService.GetSecretVersion][google.cloud.secretmanager.v1.SecretManagerService.GetSecretVersion].
 class GetSecretVersionRequest {
-  // TODO:
+
+  /// Required. The resource name of the
+  /// [SecretVersion][google.cloud.secretmanager.v1.SecretVersion] in the format
+  /// `projects/*/secrets/*/versions/*` or
+  /// `projects/*/locations/*/secrets/*/versions/*`.
+  /// 
+  /// `projects/*/secrets/*/versions/latest` or
+  /// `projects/*/locations/*/secrets/*/versions/latest` is an alias to the most
+  /// recently created
+  /// [SecretVersion][google.cloud.secretmanager.v1.SecretVersion].
+  final String? name;
+
+  GetSecretVersionRequest({
+    this.name,
+  });
+
+  factory GetSecretVersionRequest.fromJson(Map<String, Object?> json) {
+    return GetSecretVersionRequest(
+      name: json['name'],
+    );
+  }
+
+  Map<String, Object?> toJson() => {
+    if (name != null) 'name': name,
+  };
 }
 
 /// Request message for
 /// [SecretManagerService.UpdateSecret][google.cloud.secretmanager.v1.SecretManagerService.UpdateSecret].
 class UpdateSecretRequest {
-  // TODO:
+
+  /// Required. [Secret][google.cloud.secretmanager.v1.Secret] with updated field
+  /// values.
+  final Secret? secret;
+
+  /// Required. Specifies the fields to be updated.
+  final FieldMask? updateMask;
+
+  UpdateSecretRequest({
+    this.secret,
+    this.updateMask,
+  });
+
+  factory UpdateSecretRequest.fromJson(Map<String, Object?> json) {
+    return UpdateSecretRequest(
+      secret: json['secret'],
+      updateMask: json['updateMask'],
+    );
+  }
+
+  Map<String, Object?> toJson() => {
+    if (secret != null) 'secret': secret,
+    if (updateMask != null) 'updateMask': updateMask,
+  };
 }
 
 /// Request message for
 /// [SecretManagerService.AccessSecretVersion][google.cloud.secretmanager.v1.SecretManagerService.AccessSecretVersion].
 class AccessSecretVersionRequest {
-  // TODO:
+
+  /// Required. The resource name of the
+  /// [SecretVersion][google.cloud.secretmanager.v1.SecretVersion] in the format
+  /// `projects/*/secrets/*/versions/*` or
+  /// `projects/*/locations/*/secrets/*/versions/*`.
+  /// 
+  /// `projects/*/secrets/*/versions/latest` or
+  /// `projects/*/locations/*/secrets/*/versions/latest` is an alias to the most
+  /// recently created
+  /// [SecretVersion][google.cloud.secretmanager.v1.SecretVersion].
+  final String? name;
+
+  AccessSecretVersionRequest({
+    this.name,
+  });
+
+  factory AccessSecretVersionRequest.fromJson(Map<String, Object?> json) {
+    return AccessSecretVersionRequest(
+      name: json['name'],
+    );
+  }
+
+  Map<String, Object?> toJson() => {
+    if (name != null) 'name': name,
+  };
 }
 
 /// Response message for
 /// [SecretManagerService.AccessSecretVersion][google.cloud.secretmanager.v1.SecretManagerService.AccessSecretVersion].
 class AccessSecretVersionResponse {
-  // TODO:
+
+  /// The resource name of the
+  /// [SecretVersion][google.cloud.secretmanager.v1.SecretVersion] in the format
+  /// `projects/*/secrets/*/versions/*` or
+  /// `projects/*/locations/*/secrets/*/versions/*`.
+  final String? name;
+
+  /// Secret payload
+  final SecretPayload? payload;
+
+  AccessSecretVersionResponse({
+    this.name,
+    this.payload,
+  });
+
+  factory AccessSecretVersionResponse.fromJson(Map<String, Object?> json) {
+    return AccessSecretVersionResponse(
+      name: json['name'],
+      payload: json['payload'],
+    );
+  }
+
+  Map<String, Object?> toJson() => {
+    if (name != null) 'name': name,
+    if (payload != null) 'payload': payload,
+  };
 }
 
 /// Request message for
 /// [SecretManagerService.DeleteSecret][google.cloud.secretmanager.v1.SecretManagerService.DeleteSecret].
 class DeleteSecretRequest {
-  // TODO:
+
+  /// Required. The resource name of the
+  /// [Secret][google.cloud.secretmanager.v1.Secret] to delete in the format
+  /// `projects/*/secrets/*`.
+  final String? name;
+
+  /// Optional. Etag of the [Secret][google.cloud.secretmanager.v1.Secret]. The
+  /// request succeeds if it matches the etag of the currently stored secret
+  /// object. If the etag is omitted, the request succeeds.
+  final String? etag;
+
+  DeleteSecretRequest({
+    this.name,
+    this.etag,
+  });
+
+  factory DeleteSecretRequest.fromJson(Map<String, Object?> json) {
+    return DeleteSecretRequest(
+      name: json['name'],
+      etag: json['etag'],
+    );
+  }
+
+  Map<String, Object?> toJson() => {
+    if (name != null) 'name': name,
+    if (etag != null) 'etag': etag,
+  };
 }
 
 /// Request message for
 /// [SecretManagerService.DisableSecretVersion][google.cloud.secretmanager.v1.SecretManagerService.DisableSecretVersion].
 class DisableSecretVersionRequest {
-  // TODO:
+
+  /// Required. The resource name of the
+  /// [SecretVersion][google.cloud.secretmanager.v1.SecretVersion] to disable in
+  /// the format `projects/*/secrets/*/versions/*` or
+  /// `projects/*/locations/*/secrets/*/versions/*`.
+  final String? name;
+
+  /// Optional. Etag of the
+  /// [SecretVersion][google.cloud.secretmanager.v1.SecretVersion]. The request
+  /// succeeds if it matches the etag of the currently stored secret version
+  /// object. If the etag is omitted, the request succeeds.
+  final String? etag;
+
+  DisableSecretVersionRequest({
+    this.name,
+    this.etag,
+  });
+
+  factory DisableSecretVersionRequest.fromJson(Map<String, Object?> json) {
+    return DisableSecretVersionRequest(
+      name: json['name'],
+      etag: json['etag'],
+    );
+  }
+
+  Map<String, Object?> toJson() => {
+    if (name != null) 'name': name,
+    if (etag != null) 'etag': etag,
+  };
 }
 
 /// Request message for
 /// [SecretManagerService.EnableSecretVersion][google.cloud.secretmanager.v1.SecretManagerService.EnableSecretVersion].
 class EnableSecretVersionRequest {
-  // TODO:
+
+  /// Required. The resource name of the
+  /// [SecretVersion][google.cloud.secretmanager.v1.SecretVersion] to enable in
+  /// the format `projects/*/secrets/*/versions/*` or
+  /// `projects/*/locations/*/secrets/*/versions/*`.
+  final String? name;
+
+  /// Optional. Etag of the
+  /// [SecretVersion][google.cloud.secretmanager.v1.SecretVersion]. The request
+  /// succeeds if it matches the etag of the currently stored secret version
+  /// object. If the etag is omitted, the request succeeds.
+  final String? etag;
+
+  EnableSecretVersionRequest({
+    this.name,
+    this.etag,
+  });
+
+  factory EnableSecretVersionRequest.fromJson(Map<String, Object?> json) {
+    return EnableSecretVersionRequest(
+      name: json['name'],
+      etag: json['etag'],
+    );
+  }
+
+  Map<String, Object?> toJson() => {
+    if (name != null) 'name': name,
+    if (etag != null) 'etag': etag,
+  };
 }
 
 /// Request message for
 /// [SecretManagerService.DestroySecretVersion][google.cloud.secretmanager.v1.SecretManagerService.DestroySecretVersion].
 class DestroySecretVersionRequest {
-  // TODO:
+
+  /// Required. The resource name of the
+  /// [SecretVersion][google.cloud.secretmanager.v1.SecretVersion] to destroy in
+  /// the format `projects/*/secrets/*/versions/*` or
+  /// `projects/*/locations/*/secrets/*/versions/*`.
+  final String? name;
+
+  /// Optional. Etag of the
+  /// [SecretVersion][google.cloud.secretmanager.v1.SecretVersion]. The request
+  /// succeeds if it matches the etag of the currently stored secret version
+  /// object. If the etag is omitted, the request succeeds.
+  final String? etag;
+
+  DestroySecretVersionRequest({
+    this.name,
+    this.etag,
+  });
+
+  factory DestroySecretVersionRequest.fromJson(Map<String, Object?> json) {
+    return DestroySecretVersionRequest(
+      name: json['name'],
+      etag: json['etag'],
+    );
+  }
+
+  Map<String, Object?> toJson() => {
+    if (name != null) 'name': name,
+    if (etag != null) 'etag': etag,
+  };
 }

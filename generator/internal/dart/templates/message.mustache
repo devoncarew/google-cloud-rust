@@ -19,7 +19,29 @@ limitations under the License.
 /// {{{.}}}
 {{/Codec.DocLines}}
 class {{Codec.Name}} {
-  // TODO:
+  {{#Fields}}
+  {{> field}}
+  {{/Fields}}
+
+  {{Codec.Name}}({
+  {{#Fields}}
+    this.{{Codec.Name}},
+  {{/Fields}}
+  });
+
+  factory {{Codec.Name}}.fromJson(Map<String, Object?> json) {
+    return {{Codec.Name}}(
+    {{#Fields}}
+      {{Codec.Name}}: json['{{Codec.Name}}'],
+    {{/Fields}}
+    );
+  }
+
+  Map<String, Object?> toJson() => {
+  {{#Fields}}
+    if ({{Codec.Name}} != null) '{{Codec.Name}}': {{Codec.Name}},
+  {{/Fields}}
+  };
 }
 {{#Messages}}
 {{> message}}

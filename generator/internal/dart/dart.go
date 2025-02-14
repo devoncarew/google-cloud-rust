@@ -42,15 +42,15 @@ func Generate(model *api.API, outdir string, options map[string]string) error {
 
 func generatedFiles(model *api.API) []language.GeneratedFile {
 	codec := model.Codec.(*modelAnnotations)
-	snakeName := codec.MainFileName
+	fileName := codec.MainFileName
 
 	files := language.WalkTemplatesDir(dartTemplates, "templates")
 
-	// Look for and replace 'main.dart' with '{servicename}.dart'
+	// Look for and replace 'main.dart' with '{api}.dart'
 	for index, fileInfo := range files {
 		if filepath.Base(fileInfo.TemplatePath) == "main.dart.mustache" {
 			outDir := filepath.Dir(fileInfo.OutputPath)
-			fileInfo.OutputPath = filepath.Join(outDir, snakeName+".dart")
+			fileInfo.OutputPath = filepath.Join(outDir, fileName+".dart")
 
 			files[index] = fileInfo
 		}
@@ -60,29 +60,34 @@ func generatedFiles(model *api.API) []language.GeneratedFile {
 }
 
 func loadWellKnownTypes(s *api.APIState) {
+	// TODO: Validate this mapping; we might need a GTimestamp.
 	timestamp := &api.Message{
 		ID:      ".google.protobuf.Timestamp",
-		Name:    "Time",
-		Package: "time",
+		Name:    "DateTime",
+		Package: "google.protobuf",
 	}
+	// TODO: Validate this mapping; we might need a GDuration.
 	duration := &api.Message{
 		ID:      ".google.protobuf.Duration",
 		Name:    "Duration",
-		Package: "time",
+		Package: "google.protobuf",
 	}
 	s.MessageByID[timestamp.ID] = timestamp
 	s.MessageByID[duration.ID] = duration
 }
 
 func fieldType(f *api.Field, state *api.APIState) string {
+	// TODO: Add the ability to update imports.
+
 	var out string
+
 	switch f.Typez {
 	case api.STRING_TYPE:
-		out = "string"
+		out = "String"
 	case api.INT64_TYPE:
-		out = "int64"
+		out = "int"
 	case api.INT32_TYPE:
-		out = "int32"
+		out = "int"
 	case api.BOOL_TYPE:
 		out = "bool"
 	case api.BYTES_TYPE:
@@ -95,10 +100,11 @@ func fieldType(f *api.Field, state *api.APIState) string {
 			return ""
 		}
 		if m.IsMap {
+			// TODO: Extract key (field "key") and value (field "value").
 			out = "Map"
 			break
 		}
-		out = "*" + messageName(m)
+		out = messageName(m)
 	case api.ENUM_TYPE:
 		e, ok := state.EnumByID[f.TypezID]
 		if !ok {
@@ -109,11 +115,18 @@ func fieldType(f *api.Field, state *api.APIState) string {
 	default:
 		slog.Error("unhandled fieldType", "type", f.Typez, "id", f.TypezID)
 	}
+
+	if f.Repeated {
+		out = "List<" + out + ">"
+	}
+
 	return out
 }
 
 func templatesProvider() language.TemplateProvider {
 	return func(name string) (string, error) {
+		// print("[" + name + "]\n")
+
 		contents, err := dartTemplates.ReadFile(name)
 		if err != nil {
 			return "", err
@@ -125,6 +138,9 @@ func templatesProvider() language.TemplateProvider {
 func methodInOutTypeName(id string, s *api.APIState) string {
 	if id == "" {
 		return ""
+	}
+	if id == ".google.protobuf.Empty" {
+		return "void"
 	}
 	m, ok := s.MessageByID[id]
 	if !ok {
@@ -138,7 +154,7 @@ func messageName(m *api.Message) string {
 	if m.Parent != nil {
 		return messageName(m.Parent) + "$" + strcase.ToCamel(m.Name)
 	}
-	return toPascal(m.Name)
+	return strcase.ToCamel(m.Name)
 }
 
 func enumName(e *api.Enum) string {
@@ -170,10 +186,6 @@ func httpPathArgs(_ *api.PathInfo) []string {
 	var args []string
 	// TODO(#1034): Determine the correct format for Dart.
 	return args
-}
-
-func toPascal(symbol string) string {
-	return escapeKeyword(strcase.ToCamel(symbol))
 }
 
 func formatDocComments(documentation string, _ *api.APIState) []string {
@@ -257,5 +269,5 @@ func escapeKeyword(symbol string) string {
 	if !ok {
 		return symbol
 	}
-	return symbol + "_"
+	return "$" + symbol
 }
